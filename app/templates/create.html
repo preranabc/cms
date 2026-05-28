@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-md-8 col-lg-7">
+    <div class="d-flex align-items-center mb-4">
+      <a href="{{ url_for('main.index') }}" class="btn btn-outline-secondary btn-sm me-3">
+        <i class="bi bi-arrow-left"></i>
+      </a>
+      <h3 class="fw-bold mb-0">Create Article</h3>
+    </div>
+
+    <div class="card p-4">
+      <form method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Title <span class="text-danger">*</span></label>
+          <input type="text" name="title" class="form-control" placeholder="Article title" required/>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Author <span class="text-danger">*</span></label>
+          <input type="text" name="author" class="form-control" placeholder="Your name" required/>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Body <span class="text-danger">*</span></label>
+          <textarea name="body" class="form-control" rows="7" placeholder="Write your article here..." required></textarea>
+        </div>
+        <div class="mb-4">
+          <label class="form-label fw-semibold">Image (optional)</label>
+          <input type="file" name="image" class="form-control" accept="image/*"/>
+          <div class="form-text">
+            {% if config.IMAGE_UPLOAD_BACKEND == 'local' %}
+              Uploaded to local storage.
+            {% else %}
+              Uploaded to Azure Blob Storage.
+            {% endif %}
+          </div>
+        </div>
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-cloud-upload me-1"></i>Publish Article
+          </button>
+          <a href="{{ url_for('main.index') }}" class="btn btn-outline-secondary">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

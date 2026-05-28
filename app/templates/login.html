@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row justify-content-center mt-5">
+  <div class="col-md-5 col-lg-4">
+    <div class="card p-4">
+      <h4 class="mb-4 text-center fw-bold">
+        <i class="bi bi-lock-fill text-primary me-2"></i>Sign In
+      </h4>
+
+      <form method="POST" action="{{ url_for('main.login') }}">
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input type="text" name="username" class="form-control" placeholder="admin" required autofocus/>
+        </div>
+        <div class="mb-4">
+          <label class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" placeholder="••••••" required/>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 mb-3">
+          <i class="bi bi-box-arrow-in-right me-1"></i>Login
+        </button>
+      </form>
+
+      <hr class="my-2"/>
+      <a href="{{ url_for('main.microsoft_login') }}" class="btn btn-outline-dark w-100 mt-2">
+        <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 21 21">
+          <rect x="1" y="1" width="9" height="9" fill="#f25022"/>
+          <rect x="11" y="1" width="9" height="9" fill="#7fba00"/>
+          <rect x="1" y="11" width="9" height="9" fill="#00a4ef"/>
+          <rect x="11" y="11" width="9" height="9" fill="#ffb900"/>
+        </svg>
+        Sign in with Microsoft
+      </a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
